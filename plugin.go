@@ -153,9 +153,9 @@ func (c *RssPlugin) SetMessageHandler(h plugin.MessageHandler) {
 func (c *RssPlugin) DefaultConfig() interface{} {
 	return &Config{
 		FeedURLs: []string{
-			"https://lorem-rss.herokuapp.com/feed",
 			"https://xkcd.com/rss.xml",
-			"https://news.ycombinator.com/rss",
+			"https://tailscale.com/security-bulletins/index.xml",
+			"https://security.archlinux.org/advisory/feed.atom",
 		},
 		RefreshInterval: 3600,
 	}
