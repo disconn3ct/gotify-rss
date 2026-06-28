@@ -22,7 +22,7 @@ Copy built shared object to the gotify plugin directory and restart gotify.
 ## Configuration
 
 - `refresh_interval`: Polling interval in seconds
-- `feed_url`: URL of the RSS feed
+- `feed_urls`: URL of the RSS feed
 
 ## License
 
