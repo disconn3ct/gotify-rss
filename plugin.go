@@ -94,6 +94,8 @@ func (c *RssPlugin) Enable() error {
 	c.stop = make(chan struct{})
 	c.ticker = time.NewTicker(time.Duration(c.config.RefreshInterval) * time.Second)
 	c.enabled = true
+	// Initial fetch
+	c.FetchFeed()
 
 	c.wg.Add(1)
 	go func() {
@@ -156,6 +158,7 @@ func (c *RssPlugin) DefaultConfig() interface{} {
 			"https://xkcd.com/rss.xml",
 			"https://tailscale.com/security-bulletins/index.xml",
 			"https://security.archlinux.org/advisory/feed.atom",
+			"https://lorem-rss.herokuapp.com/feed?unit=minute&interval=5",
 		},
 		RefreshInterval: 3600,
 	}
@@ -163,6 +166,9 @@ func (c *RssPlugin) DefaultConfig() interface{} {
 
 func (c *RssPlugin) ValidateAndSetConfig(config interface{}) error {
 	c.config = config.(*Config)
+	if c.enabled {
+		c.FetchFeed()
+	}
 	return nil
 }
 
