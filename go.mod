@@ -1,4 +1,4 @@
-module github.com/gotify/server/v2
+module github.com/disconn3ct/gotify-rss
 
 go 1.24.0
 
